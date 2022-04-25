@@ -12,7 +12,7 @@ const Home = ({ products, bannerData }) => {
       </div>
 
       <div className='products-container'>
-        {products?.map(product => (
+        {products?.sort((a, b) => a.price > b.price ? 0 : -1).map(product => (
           <Product product={product} key={product._id} />
         ))}
       </div>
