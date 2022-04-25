@@ -163,7 +163,10 @@ const Cart = () => {
                   <h3>€{totalPrice}</h3>
                 </div>
                 <div className="btn-container">
-                  <div className="" style={{ marginTop: 50 }}>
+                  <div
+                    className="z-10"
+                    style={{ marginTop: 50, background: "white" }}
+                  >
                     <PayPalButton
                       options={{
                         clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
