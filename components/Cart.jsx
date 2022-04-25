@@ -13,7 +13,7 @@ import Modal from "react-modal";
 
 import getStripe from "../lib/getStripe";
 import { useStateContext } from "../context/StateContext";
-import { urlFor } from "../lib/client";
+import { client, urlFor } from "../lib/client";
 import { useRouter } from "next/router";
 
 Modal.setAppElement("#__next");
@@ -169,7 +169,15 @@ const Cart = () => {
                         clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
                         currency: "EUR",
                       }}
-                      onSuccess={() => router.push("/success")}
+                      onSuccess={async () => {
+                        router.push("/success");
+                        await client.createIfNotExists({
+                          _id: new Date(Date.now()).toISOString(),
+                          _type: "orders",
+                          amount: Number(totalPrice),
+                          product: String(cartItems[0].name),
+                        });
+                      }}
                       amount={totalPrice}
                     />
                   </div>
