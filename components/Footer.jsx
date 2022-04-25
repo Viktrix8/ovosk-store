@@ -39,6 +39,9 @@ const Footer = () => {
       <a href="https://www.flaticon.com/free-icons/hand" title="hand icons">
         Hand icons created by smalllikeart - Flaticon
       </a>
+      <a href="https://www.flaticon.com/free-icons/gift" title="gift icons">
+        Gift icons created by srip - Flaticon
+      </a>
     </div>
   );
 };
